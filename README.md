@@ -54,7 +54,7 @@ Currently, the API only supports shortening a single URL per API call.
 
 Example call:
 
-`POST` `http://shortme.biz/shorten?url=http://www.longurl.com`
+    POST: http://shortme.biz/shorten?url=http://www.longurl.com
 
 Example Response:
  
@@ -77,7 +77,7 @@ Currently, the API only supports shortening a single URL per API call.
 
 Example call:
 
-`GET` `http://shortme.biz/api/total_clicks?url=shortme.biz/f3Jds`
+    GET http://shortme.biz/api/total_clicks?url=shortme.biz/f3Jds
 
 Example Response:
 
