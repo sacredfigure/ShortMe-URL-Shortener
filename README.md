@@ -44,8 +44,8 @@ A Flask web app and API used to shorten long URLs.
 ShortMe's API lets you interact with ShortMe's URL shortening capabilities.
 
 ### Shorten a Link
-Given a full URL, returns an ShortMe short URL. 
-Currently the API only supports shortening a single URL per API call.
+Given a full URL, returns a ShortMe short URL. 
+Currently, the API only supports shortening a single URL per API call.
 
 * URL: `/api/shorten`
 * Method: `POST`
@@ -68,7 +68,7 @@ Example Response:
 
 ### Get total URL clicks
 Given a short URL, returns the number of times it has been clicked.  
-Currently the API only supports shortening a single URL per API call.
+Currently, the API only supports shortening a single URL per API call.
 
 * URL: `/api/total_clicks`
 * Method: `GET`
@@ -119,7 +119,7 @@ Run the app using:
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what makes the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)

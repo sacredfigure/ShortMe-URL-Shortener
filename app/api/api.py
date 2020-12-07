@@ -6,7 +6,7 @@ from flask_restful import Resource, reqparse
 
 # ------- local imports -------
 from app.db.db import db
-from app.db.models import Link
+from app.db.models import Url
 
 add_link_parser = reqparse.RequestParser()
 total_clicks_parser = reqparse.RequestParser()
@@ -34,7 +34,7 @@ class Shorten(Resource):
             res = requests.get(original_url)
 
             if res.status_code == 200:
-                link = Link(original_url=original_url)
+                link = Url(original_url=original_url)
 
                 db.session.add(link)
                 db.session.commit()
@@ -74,7 +74,7 @@ class TotalClicks(Resource):
         url = args['url'].split('/')[-1]
 
         try:
-            link = Link.query.filter_by(short_url=url).first()
+            link = Url.query.filter_by(short_url=url).first()
 
             return dict(
                 total=link.visits,

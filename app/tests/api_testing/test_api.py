@@ -5,7 +5,7 @@ import unittest
 # ------- local imports -------
 from app import create_app
 from app.db.db import db
-from app.db.models import Link
+from app.db.models import Url
 
 
 class TestApp(unittest.TestCase):
@@ -52,7 +52,7 @@ class TestApp(unittest.TestCase):
         )
 
         with self.app.app_context():
-            url = Link.query.filter_by(original_url='http://youtube.com').first()
+            url = Url.query.filter_by(original_url='http://youtube.com').first()
             short_url = url.short_url
 
         response = self.app.test_client().get(

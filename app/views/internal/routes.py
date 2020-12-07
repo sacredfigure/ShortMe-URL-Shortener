@@ -6,7 +6,7 @@ from flask import Blueprint, redirect, send_from_directory
 
 # ------- local imports -------
 from app.db.db import db
-from app.db.models import Link
+from app.db.models import Url
 
 short_blueprint = Blueprint('short_blueprint', __name__)
 app_blueprint = Blueprint('app_blueprint', __name__)
@@ -14,7 +14,7 @@ app_blueprint = Blueprint('app_blueprint', __name__)
 
 @short_blueprint.route('/<short_url>')
 def redirect_to_url(short_url):
-    link = Link.query.filter_by(short_url=short_url).first()
+    link = Url.query.filter_by(short_url=short_url).first()
     if link:
         link.visits = link.visits + 1
         db.session.commit()

@@ -7,7 +7,7 @@ from random import choices
 from .db import db
 
 
-class Link(db.Model):
+class Url(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     original_url = db.Column(db.String(512))
     short_url = db.Column(db.String(5), unique=True)

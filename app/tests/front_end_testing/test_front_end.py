@@ -67,6 +67,7 @@ class TestAppSuccess(LiveServerTestCase, unittest.TestCase):
     def test_03_total_clicks(self):
         total_clicks = TotalClicks(self.chrome_browser)
         sleep(1)
+
         # test that the text matches the expected
         p_text = total_clicks.get_total_paragraph_text()
         self.assertEqual(p_text, 'Your link has been clicked 0 times so far.')
