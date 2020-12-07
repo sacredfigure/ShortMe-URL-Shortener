@@ -94,21 +94,20 @@ Example Response:
 ## Getting Started
 Clone using 
 
-`git clone https://github.com/AcrobaticPanicc/ShortMe-URL-Shortener.git` 
+    $ git clone https://github.com/AcrobaticPanicc/ShortMe-URL-Shortener.git 
 
 Create a virtual environment for the project and activate it:
 
-`virtualenv venv`
-
-`source venv/bin/activate`
+    $ virtualenv venv
+    $ source venv/bin/activate
 
 Install the required packages:
 
-`pip install -r requirements.txt`
+    $ pip install -r requirements.txt
 
 Run the app using:
 
-`flask run`
+    $ flask run
 
 
 ## Architecture

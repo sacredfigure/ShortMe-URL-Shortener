@@ -19,7 +19,7 @@ class TestAppSuccess(LiveServerTestCase, unittest.TestCase):
 
     def create_app(self):
         app = create_app(config_file='tests/api_testing/settings.py')
-        app.config.update(LIVESERVER_PORT=8002)
+        app.config.update(LIVESERVER_PORT=8004)
         return app
 
     @classmethod
@@ -34,8 +34,8 @@ class TestAppSuccess(LiveServerTestCase, unittest.TestCase):
         index.click_shorten_button()
         self.assertEqual(index.check_warning_present(), True)
 
-        # test that an invalid link redirecrt to error page
-        index.enter_invalid_link()
+        # test that an invalid url redirecrt to error page
+        index.enter_invalid_url()
         index.click_shorten_button()
         self.assertEqual(index.get_current_url(), 'error')
         index.click_try_again()
@@ -46,7 +46,7 @@ class TestAppSuccess(LiveServerTestCase, unittest.TestCase):
                          'ShortMe is a free tool to shorten a URL.\nUse our URL Shortener to create a rememberable and easy-to-share URL.')
 
         # test that a valid URL is working
-        index.enter_valid_link()
+        index.enter_valid_url()
         index.click_shorten_button()
 
     def test_02_result(self):

@@ -9,8 +9,8 @@ from app.db.models import Url
 
 
 class TestApp(unittest.TestCase):
-    VALID_LINK = 'youtube.com'
-    INVALID_LINK = 'www.youtube.com/what?a=b&c=d'
+    VALID_url = 'youtube.com'
+    INVALID_url = 'www.youtube.com/what?a=b&c=d'
     INVALID_PARAM = 'INVALID'
 
     def setUp(self):
@@ -19,7 +19,7 @@ class TestApp(unittest.TestCase):
     def test_01_shorten_url_success(self):
         response = self.app.test_client().post(
             '/api/shorten',
-            data={'url': self.VALID_LINK},
+            data={'url': self.VALID_url},
         )
 
         res_dict = json.loads(response.get_data(as_text=True))
@@ -33,7 +33,7 @@ class TestApp(unittest.TestCase):
     def test_02_shorten_url_fail(self):
         response = self.app.test_client().post(
             '/api/shorten',
-            data={'url': self.INVALID_LINK},
+            data={'url': self.INVALID_url},
         )
 
         res_dict = json.loads(response.get_data(as_text=True))
@@ -45,7 +45,7 @@ class TestApp(unittest.TestCase):
     def test_03_total_clicks(self):
         print('02')
 
-        # add link to db
+        # add url to db
         response = self.app.test_client().post(
             '/api/shorten',
             data={'url': 'youtube.com'},

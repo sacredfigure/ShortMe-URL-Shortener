@@ -5,7 +5,7 @@ class Index(selenium_utility.SeleniumUtility):
     _heading_locator = '//p[@id="heading-p"]'
     _url_input_locator = '//input[@id="url-input"]'
     _shorten_button_locator = '//button[@type="submit"]'
-    _enter_link_warning = '//div[@class="alert-box alert-warning"]'
+    _enter_url_warning = '//div[@class="alert-box alert-warning"]'
     _try_again_button = '//button[@id="try-again-btn"]'
 
     def __init__(self, driver):
@@ -18,12 +18,12 @@ class Index(selenium_utility.SeleniumUtility):
     def get_heading_text(self):
         return self.get_element(self._heading_locator).text
 
-    def enter_valid_link(self):
+    def enter_valid_url(self):
         self.url_input = self.get_element(self._url_input_locator)
         self.url_input.click()
         self.url_input.send_keys('youtube.com')
 
-    def enter_invalid_link(self):
+    def enter_invalid_url(self):
         self.url_input.click()
         self.url_input.send_keys('https://www.youtube.com/what?a=b&c=d')
 
@@ -32,7 +32,7 @@ class Index(selenium_utility.SeleniumUtility):
         self.shorten_button.click()
 
     def check_warning_present(self):
-        return self.get_element(self._enter_link_warning).is_displayed()
+        return self.get_element(self._enter_url_warning).is_displayed()
 
     def get_current_url(self):
         return self.driver.current_url.split('/')[-1]

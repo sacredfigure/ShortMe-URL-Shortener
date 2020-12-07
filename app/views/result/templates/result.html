@@ -24,7 +24,7 @@
                                               stroke-linejoin="round"></path>
                                     </svg>
                                     <input class="card form-control form-control form-control-lg flex-shrink-1 form-control-borderless"
-                                           id="short-url" type="text" value="{{ full_short_link }}"
+                                           id="short-url" type="text" value="{{ full_short_url }}"
                                            style="margin-left: 1.4%;margin-right: 1.4%;height: 51px;border-width: 1px;">
 
                                     <button class="btn btn-primary" onclick="copyUrl()" id="copy-btn" type="button"
@@ -39,8 +39,8 @@
 
                             <form action="{{ url_for('total_clicks_blueprint.total_clicks') }}">
 
-                                <input type="hidden" id="new_link" name="new_link" value="{{ new_link }}">
-                                <p id="long-link">Original URL:&nbsp;<a href="#">{{ original_link }}</a></p>
+                                <input type="hidden" id="new_url" name="new_url" value="{{ new_url }}">
+                                <p id="long-link">Original URL:&nbsp;<a href="#">{{ original_url }}</a></p>
                                 <p id="long-link-1"><a id="total-clicks-link" onclick="this.closest('form').submit();return false;" href="">Track</a>
                                     the total clicks of your shortened URL in
                                     real-time</p>

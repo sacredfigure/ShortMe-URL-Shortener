@@ -11,13 +11,13 @@ total_clicks_blueprint = Blueprint('total_clicks_blueprint', __name__, template_
 
 @total_clicks_blueprint.route('/total_clicks')
 def total_clicks():
-    new_link = request.args['new_link']
+    new_url = request.args['new_url']
 
     base_url = flask.url_for("index_blueprint.index", _external=True)
     total_clicks_endpoint = base_url + 'api/total_clicks'
 
     params = {
-        'url': new_link
+        'url': new_url
     }
     response = requests.get(total_clicks_endpoint, params=params)
     total_clicks = json.loads(response.text)['total']

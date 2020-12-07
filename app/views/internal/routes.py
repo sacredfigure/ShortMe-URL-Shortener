@@ -14,11 +14,11 @@ app_blueprint = Blueprint('app_blueprint', __name__)
 
 @short_blueprint.route('/<short_url>')
 def redirect_to_url(short_url):
-    link = Url.query.filter_by(short_url=short_url).first()
-    if link:
-        link.visits = link.visits + 1
+    url = Url.query.filter_by(short_url=short_url).first()
+    if url:
+        url.visits = url.visits + 1
         db.session.commit()
-        return redirect(link.original_url)
+        return redirect(url.original_url)
     return redirect(short_url)
 
 

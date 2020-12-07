@@ -8,10 +8,10 @@ from flask_restful import Resource, reqparse
 from app.db.db import db
 from app.db.models import Url
 
-add_link_parser = reqparse.RequestParser()
+add_url_parser = reqparse.RequestParser()
 total_clicks_parser = reqparse.RequestParser()
 
-add_link_parser.add_argument('url', type=str, help='Long URL', required=True)
+add_url_parser.add_argument('url', type=str, help='Long URL', required=True)
 total_clicks_parser.add_argument('url', type=str, help='Short URL', required=True)
 
 
@@ -26,7 +26,7 @@ class Shorten(Resource):
 
     @staticmethod
     def post():
-        args = add_link_parser.parse_args()
+        args = add_url_parser.parse_args()
         url = args['url']
         original_url = url if url.startswith('http') else ('http://' + url)
 
@@ -34,14 +34,14 @@ class Shorten(Resource):
             res = requests.get(original_url)
 
             if res.status_code == 200:
-                link = Url(original_url=original_url)
+                url = Url(original_url=original_url)
 
-                db.session.add(link)
+                db.session.add(url)
                 db.session.commit()
 
                 return dict(
-                    short_url=link.short_url,
-                    original_url=link.original_url,
+                    short_url=url.short_url,
+                    original_url=url.original_url,
                     success=True
                 ), 200
 
@@ -65,7 +65,7 @@ class TotalClicks(Resource):
     URL: /api/total_clicks
     METHOD: GET
     PARAMS: short url
-    RETURN dictionary with the total short link visits {'total': 2}
+    RETURN dictionary with the total short url visits {'total': 2}
     """
 
     @staticmethod
@@ -74,12 +74,12 @@ class TotalClicks(Resource):
         url = args['url'].split('/')[-1]
 
         try:
-            link = Url.query.filter_by(short_url=url).first()
+            url = Url.query.filter_by(short_url=url).first()
 
             return dict(
-                total=link.visits,
-                short_url=link.short_url,
-                original_url=link.original_url,
+                total=url.visits,
+                short_url=url.short_url,
+                original_url=url.original_url,
                 success=True
             ), 200
 
